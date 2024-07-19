@@ -21,4 +21,4 @@ app.use((err:Error, req:Request, res:Response, next:NextFunction) => {
   return res.status(500).json({message: 'Internal Server Error'});
 });
 
-app.listen(3333, () => console.log('Server is running on port 3333'));
+app.listen(5000, () => console.log('Server is running on port 5000'));
