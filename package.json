@@ -6,7 +6,8 @@
   "author": "Yuri-Chaves <Yuri.Chaves39@hotmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --exit-child --respawn --no-notify src/server.ts"
+    "dev": "ts-node-dev --exit-child --respawn --no-notify src/server.ts",
+    "migrate": "yarn prisma migrate dev"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
@@ -15,8 +16,10 @@
     "typescript": "^5.5.3"
   },
   "dependencies": {
+    "@prisma/client": "^5.17.0",
     "cors": "^2.8.5",
     "express": "^4.19.2",
-    "express-async-errors": "^3.1.1"
+    "express-async-errors": "^3.1.1",
+    "prisma": "^5.17.0"
   }
 }
