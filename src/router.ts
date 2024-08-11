@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
 
-import { CrateTaskController, DetailTaskController, ListTasksController } from './controllers';
+import { CrateTaskController, DeleteTaskController, DetailTaskController, ListTasksController } from './controllers';
 
 const router = Router();
 
@@ -13,5 +13,7 @@ router.post('/task', new CrateTaskController().handle);
 router.get('/tasks', new ListTasksController().handle);
 
 router.get('/task', new DetailTaskController().handle);
+
+router.delete('/task', new DeleteTaskController().handle);
 
 export {router};
