@@ -1,8 +1,21 @@
 import { Router, Request, Response } from 'express';
 
-import { CrateTaskController, DeleteTaskController, DetailTaskController, ListTasksController, UpdateTaskController } from './controllers';
+import multer from 'multer'
+
+import { 
+  CrateTaskController,
+  CreateUserController,
+  DeleteTaskController, 
+  DetailTaskController,
+  ListTasksController,
+  UpdateTaskController
+} from './controllers';
+
+import uploadConfig from './config/multer';
 
 const router = Router();
+
+const upload = multer(uploadConfig.upload('./tmp'));
 
 router.get('/', (req: Request, res: Response) => {
   return res.json({ message: 'Hello World!' });
@@ -17,5 +30,8 @@ router.get('/task', new DetailTaskController().handle);
 router.delete('/task', new DeleteTaskController().handle);
 
 router.put('/task', new UpdateTaskController().handle);
+
+
+router.post('/user',upload.single('file'), new CreateUserController().handle);
 
 export {router};
