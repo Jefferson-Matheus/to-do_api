@@ -5,3 +5,5 @@ export * from './listTasksController';
 export * from './detailTaskController';
 
 export * from './deleteTaskController';
+
+export * from './updateTaskController';
