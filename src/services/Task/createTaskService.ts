@@ -1,8 +1,8 @@
 import prismaClient from "../../prisma";
-import { CreateTaskInterface } from "../../types/requestTypes";
+import { TaskInterface } from "../../types/requestTypes";
 
 class CreateTaskService{
-    async execute({title,description}:CreateTaskInterface){
+    async execute({title,description}:TaskInterface){
         const taskAlreadyExists = await prismaClient.task.findFirst({
             where:{
                 title:title
