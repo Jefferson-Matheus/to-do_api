@@ -16,7 +16,8 @@ class CreateTaskService{
         const task = await prismaClient.task.create({
             data:{
                 title,
-                description
+                description,
+                userId:''
             }
         })
         return task;
