@@ -1,5 +1,6 @@
 import { compare } from "bcryptjs";
 import prismaClient from "../../prisma";
+import { sign } from "jsonwebtoken";
 
 
 class AuthUserService{
@@ -24,7 +25,14 @@ class AuthUserService{
          return { message: 'Invalid password', status: 401, user: null };
         }
 
-        return { message: 'User found', status: 200, user:{ id: user.id, fullName: user.fullName, email: user.email, username: user.username, image: user.image } };
+        const secret = process.env.JWT_SECRET || 'secret';
+
+         const token = sign(
+          {name: user.fullName, email: user.email}
+          , secret, 
+          {expiresIn: '30d', subject: user.id});
+
+        return { message: 'User found', status: 200, user:{ id: user.id, fullName: user.fullName, email: user.email, username: user.username, image: user.image, token: token } };
   }
 }
 
