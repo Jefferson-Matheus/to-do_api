@@ -3,6 +3,7 @@ import { Router, Request, Response } from 'express';
 import multer from 'multer'
 
 import { 
+  AuthUserController,
   CrateTaskController,
   CreateUserController,
   DeleteTaskController, 
@@ -33,5 +34,7 @@ router.put('/task', new UpdateTaskController().handle);
 
 
 router.post('/user',upload.single('file'), new CreateUserController().handle);
+
+router.post('/auth', new AuthUserController().handle);
 
 export {router};
