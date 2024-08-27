@@ -6,7 +6,11 @@ interface Payload{
 }
 
 export function isAuthenticated(req: Request, res: Response, next: NextFunction) {
+  console.log('Entrou no middleware');
+  
   const authToken = req.headers.authorization;
+
+  console.log(authToken);
 
   if (!authToken) {
     return res.status(401).end();
@@ -14,10 +18,8 @@ export function isAuthenticated(req: Request, res: Response, next: NextFunction)
 
   const [,token] = authToken.split(' ');
 
-  const secret = process.env.JWT_SECRET || 'secret';
-
   try {
-    const { sub } =  verify(token, secret) as Payload;
+    const { sub } =  verify(token, process.env.JWT_SECRET) as Payload;
 
     req.userId = sub;
 

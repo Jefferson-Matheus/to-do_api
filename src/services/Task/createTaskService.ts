@@ -2,7 +2,7 @@ import prismaClient from "../../prisma";
 import { TaskInterface } from "../../types/requestTypes";
 
 class CreateTaskService{
-    async execute({title,description}:TaskInterface){
+    async execute({title,description,userId}:TaskInterface){
         const taskAlreadyExists = await prismaClient.task.findFirst({
             where:{
                 title:title
@@ -17,7 +17,7 @@ class CreateTaskService{
             data:{
                 title,
                 description,
-                userId:''
+                userId
             }
         })
         return task;
