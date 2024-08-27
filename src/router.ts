@@ -13,6 +13,7 @@ import {
 } from './controllers';
 
 import uploadConfig from './config/multer';
+import { isAuthenticated } from './middlewares/isAuthenticated';
 
 const router = Router();
 
@@ -22,7 +23,7 @@ router.get('/', (req: Request, res: Response) => {
   return res.json({ message: 'Hello World!' });
 });
 
-router.post('/task', new CrateTaskController().handle);
+router.post('/task',isAuthenticated , new CrateTaskController().handle);
 
 router.get('/tasks', new ListTasksController().handle);
 

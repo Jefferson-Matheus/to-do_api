@@ -1,6 +1,7 @@
 export interface TaskInterface{
     title:string
     description:string
+    userId:string
     done?:boolean
 }
 
