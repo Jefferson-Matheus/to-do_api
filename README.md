@@ -1,6 +1,6 @@
 - clonar repositorio:
 ```bash
-https://github.com/Jefferson-Matheus/teste_estudo.git
+https://github.com/Jefferson-Matheus/to-do_api.git
 ```
 - instalar dependências:
 ```bash
